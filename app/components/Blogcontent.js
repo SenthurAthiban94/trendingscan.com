@@ -105,7 +105,7 @@ export default class Blogcontent extends Component {
 
     createContentUrl(event,i){
         event.preventDefault();
-        var pagetoshare="https://trendingscan.com/?id="+this.state.contents_in_view[i]["_id"],
+        var pagetoshare="http://trendingscan.com/?id="+this.state.contents_in_view[i]["_id"],
             details=this.state.contents_in_view[i];
         this.socialshare(details,pagetoshare,event.target.parentElement.className);    
     }

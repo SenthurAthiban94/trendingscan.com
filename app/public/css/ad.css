@@ -1,0 +1,16 @@
+.TOP,.BOTTOM{
+    background-color:#ced6e0;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+.LEFT{
+    float: left;
+    width:100%;
+    background-color:#ced6e0;
+}
+.RIGHT{
+    width:100%;
+    float: right;
+    background-color:#ced6e0;
+}

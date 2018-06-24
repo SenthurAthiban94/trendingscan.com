@@ -1,0 +1,47 @@
+{
+  "name": "serversideboilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for serverside rendering of reactjs",
+  "main": "index.js",
+  "scripts": {
+    "build:server": "babel ./app/server -d build/server",
+    "build:watch:server": "babel ./app/server -d build/server --watch",
+    "build:client": "webpack --config ./webpack.config.js/",
+    "build:watch:client": "webpack --config ./webpack.config.js/ --watch",
+    "build:prod": "npm run build:server && npm run build:client",
+    "start": "npm run build:prod && SET NODE_ENV=production && node ./build/server/index.js",
+    "start:dev": "parallelshell \"npm run build:watch:server\" \"npm run build:watch:client\" \"nodemon ./build/server/index.js\"",
+    "start:dev:client": "webpack-dev-server"
+  },
+  "author": "Senthur Athiban",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "file-loader": "^1.1.11",
+    "html-react-parser": "^0.4.6",
+    "memory-cache": "^0.2.0",
+    "mongoose": "^5.0.16",
+    "node-google-search-trends": "^1.1.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-helmet": "^5.2.0",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.17.5",
+    "parallelshell": "^3.0.2",
+    "webpack": "^4.12.0",
+    "webpack-dev-server": "^3.1.4"
+  }
+}

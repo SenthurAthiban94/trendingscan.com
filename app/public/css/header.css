@@ -1,0 +1,10 @@
+.header_container{
+    background-color:black;
+    color:white;
+    width:100%;
+    border-bottom: 1px solid black;
+}
+.header_logo{
+    width:190px;
+    height:60px;    
+}

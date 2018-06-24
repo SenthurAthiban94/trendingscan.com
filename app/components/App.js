@@ -120,7 +120,7 @@ class App extends Component {
                               <meta name="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
                               <meta name="fb:page_id" content="189414828370961" />
                               {/* <meta name="og:country-name" content="India"/> */}
-                              <meta itemprop="name" content="News New Trending Searches" />
+                              <meta itemprop="name" content="Trendingscan - Top Trending Searches " />
                               <meta itemprop="image" content="./public/assets/images/logo.png" />
                               <meta itemprop="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
                               <meta property="fb:app_id" content="462468354180027"/>
@@ -149,7 +149,7 @@ class App extends Component {
                               <meta name="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
                               <meta name="fb:page_id" content="189414828370961" />
                               {/* <meta name="og:country-name" content="India"/> */}
-                              <meta itemprop="name" content="News New Trending Searches" />
+                              <meta itemprop="name" content="Trendingscan - Top Trending Searches" />
                               <meta itemprop="image" content="./public/assets/images/logo.png" />
                               <meta itemprop="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
                               <meta property="fb:app_id" content="462468354180027"/>

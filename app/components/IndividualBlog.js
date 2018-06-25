@@ -105,14 +105,14 @@ export default class IndividualBlog extends Component {
                 <meta name="fb:page_id" content="189414828370961" />
                 <meta name="og:country-name" content={contents.countryName}/> 
                 <meta itemprop="name" content={contents.title} />
-                <meta itemprop="image" content={seologo} />
+                <meta itemprop="image" content={"./"+seologo} />
                 <meta itemprop="description" content={seo_desc} />
                 <meta property="fb:app_id" content="462468354180027"/>
                 <meta property="og:url" content="http://trendingscan.com/" />
                 <meta property="og:title" content={contents.title} />
                 <meta property="og:type" content="article"/>
                 <meta property="og:description" content={seo_desc}/>
-                <meta property="og:image" content={seologo}/>
+                <meta property="og:image" content={"./"+seologo}/>
             </Helmet>
         <div className="container individual-container">
                 {(this.state.loader) ? <div className="loader-wrapper"><label className="loader"></label></div> : 

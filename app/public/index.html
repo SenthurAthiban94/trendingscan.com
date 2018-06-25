@@ -7,8 +7,6 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./favicon.ico">
-    <!-- /SEO -->
-
     <!-- CSS -->
     <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json"> -->
     <!-- <link href="%PUBLIC_URL%/lib/js/bootstrap.min.css" rel="stylesheet"> -->
@@ -17,7 +15,13 @@
 </head>
 <body>
     <div id="root"></div>
-    <script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121316897-2"></script>
+	<script>
+  	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments);}
+  	gtag('js', new Date());
+  	gtag('config', 'UA-121316897-2');
         window.fbAsyncInit = function() {
             FB.init({
             appId      : '462468354180027',
@@ -26,7 +30,8 @@
             });
             FB.AppEvents.logPageView();
         };
-    
+
+    	//Facebook Code
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {return;}

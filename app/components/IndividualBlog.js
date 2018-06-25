@@ -4,7 +4,8 @@ import './../public/css/individualSite.css';
 import defaultcontentImage from "./../public/assets/images/contentImage.jpg";
 // HTML Parser modules
 import Parser from 'html-react-parser';
-// import { render } from 'react-dom';
+import seologo from './../public/assets/images/FB-Trendingscan.png';
+
 
 
 export default class IndividualBlog extends Component {
@@ -36,7 +37,7 @@ export default class IndividualBlog extends Component {
         return result ? result : false;
     }
     componentWillMount(){
-        fetch('http://localhost:8080/sites/'+this.props.id,{headers: {               //http://localhost:3001/
+        fetch('http://trendingscan.com/sites/'+this.props.id,{headers: {               //http://localhost:3001/
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }})
@@ -97,21 +98,21 @@ export default class IndividualBlog extends Component {
     return (
         <div>
             <Helmet>
-                <title>{"Trendingscan "+(contents.title ? "- "+contents.title : "")}</title>
+                <title>{"Trendingscan "+(contents.title ? "- "+contents.title : contents.countryName)}</title>
                 <link rel="alternate" hreflang="x-default" href="http://trendingscan.com/" />
                 <link rel="canonical" href="http://trendingscan.com/" /> 
                 <meta name="description" content={seo_desc} />
                 <meta name="fb:page_id" content="189414828370961" />
-                {/* <meta name="og:country-name" content="India"/> */}
+                <meta name="og:country-name" content={contents.countryName}/> 
                 <meta itemprop="name" content={contents.title} />
-                <meta itemprop="image" content={contentImage} />
+                <meta itemprop="image" content={seologo} />
                 <meta itemprop="description" content={seo_desc} />
                 <meta property="fb:app_id" content="462468354180027"/>
                 <meta property="og:url" content="http://trendingscan.com/" />
                 <meta property="og:title" content={contents.title} />
                 <meta property="og:type" content="article"/>
                 <meta property="og:description" content={seo_desc}/>
-                <meta property="og:image" content={contentImage}/>
+                <meta property="og:image" content={seologo}/>
             </Helmet>
         <div className="container individual-container">
                 {(this.state.loader) ? <div className="loader-wrapper"><label className="loader"></label></div> : 

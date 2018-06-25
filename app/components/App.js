@@ -8,6 +8,7 @@ import IndividualBlog from './IndividualBlog';
 import PrivacyPolicy from './PrivacyPolicy';
 import './../public/css/Main.css';
 import logo from './../public/assets/images/logo.png';
+import seologo from './../public/assets/images/FB-Trendingscan.png';
 
 class App extends Component {
   constructor(){
@@ -64,7 +65,7 @@ class App extends Component {
   }
   viewPrivacyPolicy(){
     var currentpage=window.location.href;
-    if(currentpage==="http://localhost:8080/privacy-policy/" || currentpage==="http://localhost:8080/privacy-policy"){    
+    if(currentpage==="http://trendingscan.com/privacy-policy/" || currentpage==="http://trendingscan.com/privacy-policy"){    
        return true;
     }
     return false;
@@ -114,21 +115,21 @@ class App extends Component {
       
     var pagecontent= this.viewPrivacyPolicy() ? (<div>
                           <Helmet>
-                              <title>Trendingscan | Home</title>
+                              <title>Trendingscan | Privacy Policy</title>
                               <link rel="alternate" hreflang="x-default" href="http://trendingscan.com/" />
                               <link rel="canonical" href="http://trendingscan.com/" /> 
                               <meta name="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
                               <meta name="fb:page_id" content="189414828370961" />
                               {/* <meta name="og:country-name" content="India"/> */}
                               <meta itemprop="name" content="Trendingscan - Top Trending Searches " />
-                              <meta itemprop="image" content="./public/assets/images/logo.png" />
+                              <meta itemprop="image" content={seologo} />
                               <meta itemprop="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
-                              <meta property="fb:app_id" content="462468354180027"/>
+                              <meta property="fb:app_id" content="462468354180027" />
                               <meta property="og:url" content="http://trendingscan.com/" />
                               <meta property="og:title" content="Trendingscan - Top Trending Searches" />
                               <meta property="og:type" content="article"/>
-                              <meta property="og:description" content="Explore Top Trending Searches On Internet With Trendingscan"/>
-                              <meta property="og:image" content="./public/assets/images/logo.png"/>
+                              <meta property="og:description" content="Explore Top Trending Searches On Internet With Trendingscan" />
+                              <meta property="og:image" content={seologo} />
                           </Helmet>
                           <div className="container-fluid">
                             <div className='row'>
@@ -150,14 +151,14 @@ class App extends Component {
                               <meta name="fb:page_id" content="189414828370961" />
                               {/* <meta name="og:country-name" content="India"/> */}
                               <meta itemprop="name" content="Trendingscan - Top Trending Searches" />
-                              <meta itemprop="image" content="./public/assets/images/logo.png" />
+                              <meta itemprop="image" content={seologo} />
                               <meta itemprop="description" content="Explore Top Trending Searches On Internet With Trendingscan" />
-                              <meta property="fb:app_id" content="462468354180027"/>
+                              <meta property="fb:app_id" content="462468354180027" />
                               <meta property="og:url" content="http://trendingscan.com/" />
                               <meta property="og:title" content="Trendingscan - Top Trending Searches" />
-                              <meta property="og:type" content="article"/>
-                              <meta property="og:description" content="Explore Top Trending Searches On Internet With Trendingscan"/>
-                              <meta property="og:image" content="./public/assets/images/logo.png"/>
+                              <meta property="og:type" content="article" />
+                              <meta property="og:description" content="Explore Top Trending Searches On Internet With Trendingscan" />
+                              <meta property="og:image" content={seologo} />
                           </Helmet>
                           <div className="container-fluid">
                             <div className='row'>

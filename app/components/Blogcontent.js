@@ -110,7 +110,9 @@ export default class Blogcontent extends Component {
         this.socialshare(details,pagetoshare,event.target.parentElement.className);    
     }
     socialshare(details,url,media){
-        var description=(details["summary"] && (details["summary"]["content"] && details["summary"]["content"]!="")) ? details["summary"]["content"] : ((details["summary"] && (details["summary"]["title"] && details["summary"]["title"]!="")) ? details["summary"]["title"] : details["title"]);
+	var defaultDescription="Explore Top Trending Searches On Internet With Trendingscan";
+        var description=(details["title"] ? details["title"] : (details["summary"] && Object.keys( details["summary"]).length ? (details["summary"]["title"] ? details["summary"]["title"] : (details["summary"]["content"] ? details["summary"]["content"] : defaultDescription )) : defaultDescription));
+//(details["summary"] && (details["summary"]["content"] && details["summary"]["content"]!="")) ? details["summary"]["content"] : ((details["summary"] && (details["summary"]["title"] && details["summary"]["title"]!="")) ? details["summary"]["title"] : details["title"]);
             description=this.shorten_description(this.stripHTML(description),50);
         switch(media){
 

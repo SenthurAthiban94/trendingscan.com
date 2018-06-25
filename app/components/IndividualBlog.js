@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {Helmet} from 'react-helmet';
 import './../public/css/individualSite.css';
 import defaultcontentImage from "./../public/assets/images/contentImage.jpg";

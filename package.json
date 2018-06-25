@@ -13,6 +13,14 @@
     "start:dev": "parallelshell \"npm run build:watch:server\" \"npm run build:watch:client\" \"nodemon ./build/server/index.js\"",
     "start:dev:client": "webpack-dev-server"
   },
+  "reactSnapshot": {
+    "include": [
+      "./build"
+    ],
+    "exclude": [
+      "*"
+    ]
+  },
   "author": "Senthur Athiban",
   "license": "ISC",
   "dependencies": {

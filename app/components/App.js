@@ -21,6 +21,7 @@ class App extends Component {
       blogdetails : this._getParameter('id')
     }
     this.changefilter=this.changefilter.bind(this);
+    this.is_mounted=false;
   }
 
    _getParameter(identifier) {
@@ -62,6 +63,9 @@ class App extends Component {
   componentWillMount(){
     // this.getmylocation();
     // this.ipLookUp();
+  }
+  componentDidMount(){
+     this.is_mounted=true;
   }
   viewPrivacyPolicy(){
     var currentpage=window.location.href;
@@ -106,13 +110,14 @@ class App extends Component {
     }
   }
   render() {
+
     var searchoption=this.state.blogdetails ? "" : (<Search filter={this.changefilter}/>);
     var contents_container=this.state.blogdetails ? (
                             <IndividualBlog id={this.state.blogdetails} currenturl={this.state.blogdetails}/>
                           ) : (
                             <Blogcontent filter={this.state.filter} />
                           );
-      
+    if(contents_container){
     var pagecontent= this.viewPrivacyPolicy() ? (<div>
                           <Helmet>
                               <title>Trendingscan | Privacy Policy</title>
@@ -191,6 +196,10 @@ class App extends Component {
                         </div>
                       );
       return pagecontent;
+    }
+    else{
+	return (<div></div>);	
+    }
   }
 }
 

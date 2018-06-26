@@ -108,7 +108,7 @@ export default class IndividualBlog extends Component {
                 <meta itemprop="image" content={"./"+seologo} />
                 <meta itemprop="description" content={seo_desc} />
                 <meta property="fb:app_id" content="462468354180027"/>
-                <meta property="og:url" content="http://trendingscan.com/" />
+		<meta property="og:url" content="http://trendingscan.com/" />
                 <meta property="og:title" content={contents.title} />
                 <meta property="og:type" content="article"/>
                 <meta property="og:description" content={seo_desc}/>

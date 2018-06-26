@@ -99,8 +99,12 @@ export default class Blogcontent extends Component {
     }
 
     shorten_description(longstring,charCount){
-        longstring=longstring.substring(0,charCount);
-        return longstring.substr(0, Math.min(longstring.length, longstring.lastIndexOf(" ")))+"...";
+        if(longstring.length > charCount){
+		longstring=longstring.substring(0,charCount);
+        	return longstring.substr(0, Math.min(longstring.length, longstring.lastIndexOf(" ")))+"...";
+    	}else{
+		return longstring;
+	}
     }
 
     createContentUrl(event,i){
@@ -134,10 +138,8 @@ export default class Blogcontent extends Component {
                 if(this.detectmobile()){
                     domain="whatsapp://";
                 }
-                window.open(domain+"send?text=*"+description+"* \
-                                                "+encodeURIComponent(url)+"\
-                                                To Know The Trending Topic Searched On Internet Today Visit \
-                                                *www.trendingscan.com*");
+		var whatsappMessage= "*"+description+"*\n"+url+"\n"+"To Know the Trending Topics searched around the world today visit *www.trendingscan.com*";
+                window.open(domain+"send?text="+encodeURIComponent(whatsappMessage));
                 break;
             default:
                 break;

@@ -20,7 +20,7 @@ export default class Blogcontent extends Component {
         this.is_mounted=false;
     }
     sortByCity(cityname){
-        this.setState({error:false,loader:true,contents_in_view : []});
+       this.setState({error:false,loader:true,contents_in_view : []});
         fetch('/sitesbycities/'+cityname+'/'+this.state.resultcount,{headers: {               //http://localhost:3001/
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -102,9 +102,9 @@ export default class Blogcontent extends Component {
         if(longstring.length > charCount){
 		longstring=longstring.substring(0,charCount);
         	return longstring.substr(0, Math.min(longstring.length, longstring.lastIndexOf(" ")))+"...";
-    	}else{
+	}else{
 		return longstring;
-	}
+	}    
     }
 
     createContentUrl(event,i){
@@ -115,10 +115,10 @@ export default class Blogcontent extends Component {
     }
     socialshare(details,url,media){
 	var defaultDescription="Explore Top Trending Searches On Internet With Trendingscan";
-        var description=(details["title"] ? details["title"] : (details["summary"] && Object.keys( details["summary"]).length ? (details["summary"]["title"] ? details["summary"]["title"] : (details["summary"]["content"] ? details["summary"]["content"] : defaultDescription )) : defaultDescription));
+	var description=(details["title"] ? details["title"] : (details["summary"] && Object.keys( details["summary"]).length ? (details["summary"]["title"] ? details["summary"]["title"] : (details["summary"]["content"] ? details["summary"]["content"] : defaultDescription )) : defaultDescription));
 //(details["summary"] && (details["summary"]["content"] && details["summary"]["content"]!="")) ? details["summary"]["content"] : ((details["summary"] && (details["summary"]["title"] && details["summary"]["title"]!="")) ? details["summary"]["title"] : details["title"]);
             description=this.shorten_description(this.stripHTML(description),50);
-        switch(media){
+	switch(media){
 
             case "social_media_f":
                 if(this.detectmobile()){

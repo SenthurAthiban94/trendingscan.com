@@ -4,11 +4,10 @@ var mcache = require('memory-cache');
 
 module.exports = function(app) {
   // mem-cache settings
-  var maxAge=3000; //in seconds
-
+  var maxAge=3000;                  //in seconds
   // Load controller 
-  var Sites= require('../controllers/apiController');
-
+  var Sites= require('./../controllers/apiController');
+  
   // Server Cache
   var cache = (duration="") => {
     return (req, res, next) => {
@@ -42,5 +41,6 @@ module.exports = function(app) {
   
   app.route('/sitesbycities/:countryName/:resultCount')
   .get(cache(),Sites.list_sites_by_city)
+  
 
 };

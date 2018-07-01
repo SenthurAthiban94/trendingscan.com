@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import './../public/css/blog.css';
-import defaultcontentImage from "./../public/assets/images/contentImage.jpg";
+import './../assets/css/blog.css';
+import defaultcontentImage from "./../assets/images/contentImage.jpg";
 // HTML Parser modules
 import Parser from 'html-react-parser';
 // import { render } from 'react-dom';
@@ -20,7 +20,7 @@ export default class Blogcontent extends Component {
         this.is_mounted=false;
     }
     sortByCity(cityname){
-       this.setState({error:false,loader:true,contents_in_view : []});
+        this.setState({error:false,loader:true,contents_in_view : []});
         fetch('/sitesbycities/'+cityname+'/'+this.state.resultcount,{headers: {               //http://localhost:3001/
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -72,7 +72,6 @@ export default class Blogcontent extends Component {
     componentDidMount() {
         if(!this.is_mounted){
             this.is_mounted=true;
-            console.log("Mounted");
             this.applyfilter(this.props);
         }
     }
@@ -81,9 +80,9 @@ export default class Blogcontent extends Component {
         this.is_mounted=false;
     }
     componentWillReceiveProps(nextProps) {
-        var previousstate=this.state;
-            previousstate.resultcount=10;
-            this.setState(previousstate);
+        // var previousstate=this.state;
+        //     previousstate.resultcount=20;
+        //     this.setState(previousstate);
         this.applyfilter(nextProps);
     }
     moreresults(){
@@ -99,26 +98,20 @@ export default class Blogcontent extends Component {
     }
 
     shorten_description(longstring,charCount){
-        if(longstring.length > charCount){
-		longstring=longstring.substring(0,charCount);
-        	return longstring.substr(0, Math.min(longstring.length, longstring.lastIndexOf(" ")))+"...";
-	}else{
-		return longstring;
-	}    
+        longstring=longstring.substring(0,charCount);
+        return longstring.substr(0, Math.min(longstring.length, longstring.lastIndexOf(" ")))+"...";
     }
 
     createContentUrl(event,i){
         event.preventDefault();
-        var pagetoshare="http://trendingscan.com/?id="+this.state.contents_in_view[i]["_id"],
+        var pagetoshare="http://trendingscan.com/desc/"+this.state.contents_in_view[i]["_id"],
             details=this.state.contents_in_view[i];
         this.socialshare(details,pagetoshare,event.target.parentElement.className);    
     }
     socialshare(details,url,media){
-	var defaultDescription="Explore Top Trending Searches On Internet With Trendingscan";
-	var description=(details["title"] ? details["title"] : (details["summary"] && Object.keys( details["summary"]).length ? (details["summary"]["title"] ? details["summary"]["title"] : (details["summary"]["content"] ? details["summary"]["content"] : defaultDescription )) : defaultDescription));
-//(details["summary"] && (details["summary"]["content"] && details["summary"]["content"]!="")) ? details["summary"]["content"] : ((details["summary"] && (details["summary"]["title"] && details["summary"]["title"]!="")) ? details["summary"]["title"] : details["title"]);
+        var description=(details["summary"] && (details["summary"]["content"] && details["summary"]["content"]!="")) ? details["summary"]["content"] : ((details["summary"] && (details["summary"]["title"] && details["summary"]["title"]!="")) ? details["summary"]["title"] : details["title"]);
             description=this.shorten_description(this.stripHTML(description),50);
-	switch(media){
+        switch(media){
 
             case "social_media_f":
                 if(this.detectmobile()){
@@ -138,8 +131,10 @@ export default class Blogcontent extends Component {
                 if(this.detectmobile()){
                     domain="whatsapp://";
                 }
-		var whatsappMessage= "*"+description+"*\n"+url+"\n"+"To Know the Trending Topics searched around the world today visit *www.trendingscan.com*";
-                window.open(domain+"send?text="+encodeURIComponent(whatsappMessage));
+                window.open(domain+"send?text=*"+description+"* \
+                                                "+encodeURIComponent(url)+"\
+                                                To Know The Trending Topic Searched On Internet Today Visit \
+                                                *www.trendingscan.com*");
                 break;
             default:
                 break;
@@ -164,7 +159,7 @@ export default class Blogcontent extends Component {
     render() {
         var renderelement= (
             <div className="content-wrapper">
-                <h1 className="Heading">Trending on {this.props.filter.value}</h1>
+                <h1 className="Heading">Trending on <b>{this.props.filter.value}</b></h1>
                 {    
                     (this.state.loader) ? <div className="loader-wrapper"><label className="loader"></label></div> : 
                     (this.state.error) ? <div className="text-center error_info">Something Went Wrong. Please try again Later!!</div> :
@@ -172,7 +167,7 @@ export default class Blogcontent extends Component {
                         var current_classname="blog-card "+((v % 2!==0) ? "alt" : ""),
                             image_url=e.contentImageUrl ? e.contentImageUrl : defaultcontentImage,
                             current_imageURL={background: 'url("'+image_url+'") center no-repeat',backgroundSize: '150px 150px'},
-                            contentlink=e.contentLink ? (<a rel="nofollow, noindex, noopener" className="read_more" href={e.contentLink} target="_blank">Read More</a>) : "",
+                            contentlink=e.contentLink ? (<a rel="nofollow, noindex, noopener" className="read_more" href={e.contentLink} target="_blank"><b>Read More</b></a>) : "",
                             summary=e.summary ? (
                                                     <div className="summary">
                                                         <p>
@@ -210,7 +205,7 @@ export default class Blogcontent extends Component {
                                         {/* </li> */}
                                     </ul>
                                     <div className="description">
-                                        <a className="description_link" target="_blank" href={"./?id="+e._id}>
+                                        <a className="description_link" target="_blank" href={"./desc/"+e._id}>
                                             <h3>{e.title}</h3>
                                         </a>
                                         <h2>{e.description}</h2>

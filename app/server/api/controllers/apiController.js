@@ -131,18 +131,22 @@ function SaveAll(payload){
 
 exports.read_a_Site = function(req, res) {
     Sites.findById(req.params.siteId, function(err, site) {
-    if (err)
+    if (err){
       res.send(err);
-    res.json(site);
+    }else{
+      res.json(site);
+    }
   });
 };
 
 
 exports.update_a_Site = function(req, res) {
     Sites.findOneAndUpdate({_id: req.params.siteId}, req.body, {new: true}, function(err, site) {
-    if (err)
+    if (err){
       res.send(err);
-    res.json(site);
+    }else{
+      res.json(site);
+    }
   });
 };
 
